@@ -14,6 +14,11 @@ This lib has the premise of calculating the size scale for fonts, widths, height
 | Value parameter | String or Number | This parameters define value is scaled |
 | Return type | bool | This parameters define type return, if true return number, if false return string px |
 
+## Install
+```js
+yarn add react-native-calculated-scale
+```
+
 ## Using with Styled Components
 ```js
 import styled from 'styled-components/native'
