@@ -1,2 +1,2 @@
-import scaled from './dist/scaled'
-export default scaled
+import { font, horizontal, vertical } from './dist/scaled'
+export default { font, horizontal, vertical }
