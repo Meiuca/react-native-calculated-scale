@@ -9,10 +9,10 @@ This lib has the premise of calculating the size scale for fonts, widths, height
 | horizontal | this function scaled values horizontal left and right | value, return type |
 
 ### Parameters
-| Name | Type | Description |
-|--|--|--|
-| Value parameter | String or Number | This parameters define value is scaled |
-| Return type | bool | This parameters define type return, if true return number, if false return string px |
+| Name | Type | Description | Required | Default |
+|--|--|--|--|--|
+| Value parameter | String or Number | This parameters define value is scaled | true | - |
+| Return type | bool | This parameters define type return, if true return number, if false return string px | false | false |
 
 ## Install
 ```js
