@@ -1,0 +1,9 @@
+{
+  "name": "react-native-calculated-scale",
+  "description": "This lib calculated scaled font-size, width, height, margins and paddings",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Meiuca/react-native-calculated-scale.git",
+  "author": "Meiuca <diego.alves@meiuca.design>",
+  "license": "MIT"
+}
