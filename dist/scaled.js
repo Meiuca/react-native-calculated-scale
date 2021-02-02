@@ -1,65 +1,78 @@
 import { Dimensions, PixelRatio } from "react-native";
 
 /** This values  */
-const WIDTH_SCREEN = 375
-const HEIGHT_SCREEN = 812
-const REM = 16
+var WIDTH_SCREEN = 375,
+  HEIGHT_SCREEN = 812,
+  REM = 16;
+
+function set({ width, height, rem }) {
+  WIDTH_SCREEN = parseFloat(width) || WIDTH_SCREEN;
+  HEIGHT_SCREEN = parseFloat(height) || HEIGHT_SCREEN;
+  REM = parseFloat(rem) || REM;
+}
 
 function font(size, number = false) {
-    let parsedSize = parseSize(size, REM);
+  if (!size) return;
 
-    let { width, height } = Dimensions.get("window");
+  let parsedSize = parseSize(size, REM);
 
-    let scaleWidth = width / WIDTH_SCREEN;
-    let scaleHeight = height / HEIGHT_SCREEN;
+  let { width, height } = Dimensions.get("window");
 
-    let scale = Math.min(scaleWidth, scaleHeight);
+  let scaleWidth = width / WIDTH_SCREEN;
+  let scaleHeight = height / HEIGHT_SCREEN;
 
-    let to_ret = Math.ceil(
-        PixelRatio.roundToNearestPixel(parsedSize * scale - scale)
-    );
+  let scale = Math.min(scaleWidth, scaleHeight);
 
-    return number ? to_ret : to_ret + "px";
+  let to_ret = Math.ceil(
+    PixelRatio.roundToNearestPixel(parsedSize * scale - scale)
+  );
+
+  return number ? to_ret : to_ret + "px";
 }
 
 function horizontal(size, number = false) {
-    let parsedSize = parseSize(size, REM);
+  if (!size) return;
 
-    let { width } = Dimensions.get("window");
+  let parsedSize = parseSize(size, REM);
 
-    let scaleWidth = width / WIDTH_SCREEN;
+  let { width } = Dimensions.get("window");
 
-    let to_ret = Math.ceil(
-        PixelRatio.roundToNearestPixel(parsedSize * scaleWidth)
-    );
+  let scaleWidth = width / WIDTH_SCREEN;
 
-    return number ? to_ret : to_ret + "px";
+  let to_ret = Math.ceil(
+    PixelRatio.roundToNearestPixel(parsedSize * scaleWidth)
+  );
+
+  return number ? to_ret : to_ret + "px";
 }
 
 function vertical(size, number = false) {
-    let parsedSize = parseSize(size, REM);
+  if (!size) return;
 
-    let { height } = Dimensions.get("window");
+  let parsedSize = parseSize(size, REM);
 
-    let scaleHeight = height / HEIGHT_SCREEN;
+  let { height } = Dimensions.get("window");
 
-    let to_ret = Math.ceil(
-        PixelRatio.roundToNearestPixel(parsedSize * scaleHeight)
-    );
+  let scaleHeight = height / HEIGHT_SCREEN;
 
-    return number ? to_ret : to_ret + "px";
+  let to_ret = Math.ceil(
+    PixelRatio.roundToNearestPixel(parsedSize * scaleHeight)
+  );
+
+  return number ? to_ret : to_ret + "px";
 }
 
 function parseSize(size, rem) {
-    return typeof size == "string"
-        ? size.includes("rem")
-            ? parseFloat(size) * rem
-            : parseFloat(size)
-        : size;
+  let to_ret =
+    typeof size == "string"
+      ? size.includes("rem")
+        ? parseFloat(size) * rem
+        : parseFloat(size)
+      : size;
+
+  if (isNaN(to_ret)) throw new Error(`${size} is NaN`);
+
+  return to_ret;
 }
 
-export {
-    font,
-    horizontal,
-    vertical,
-}
+export { font, horizontal, vertical, set };
